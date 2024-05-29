@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import { API_CREATE_DOC } from '../../utils/constants';
+import { API_CREATE_DOC } from '../utils/constants';
 
 const CreateDoc = () => {
     const [docName, setDocName] = useState('');
