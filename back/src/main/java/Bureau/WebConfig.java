@@ -31,10 +31,11 @@ public class WebConfig implements WebMvcConfigurer {
     @Override
     public void addCorsMappings(CorsRegistry registry) {
         registry.addMapping("/**")
-                .allowedOrigins("http://localhost:3000")
-                .allowedMethods("GET","POST","OPTIONS", "DELETE")
-                .allowedHeaders("Origin", "Content-Type", "Accept", "Authorization", "Vary")
-                .allowCredentials(true).maxAge(3600);
+                .allowedOrigins("http://localhost:3000") // Разрешить запросы с этого домена
+                .allowedMethods("GET", "POST", "PUT", "DELETE") // Разрешенные HTTP-методы
+                .allowedHeaders("Origin", "Content-Type", "Accept", "Authorization") // Разрешенные заголовки
+                .allowCredentials(true) // Разрешить передачу учетных данных (например, куки)
+                .maxAge(3600); // Максимальное время жизни предварительных запросов (preflight)
 
     }
 

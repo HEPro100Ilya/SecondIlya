@@ -1,7 +1,5 @@
 package Control;
 
-import java.util.List;
-import org.springframework.web.bind.annotation.RestController;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -12,10 +10,13 @@ import Service.DocumentService;
 import Service.DocumentVersionService;
 import Service.DocumentInfoService;
 import Dop.*;
-import Models.*;
+import Models.Document;
+import Models.DocumentVersion;
 
-@RestController
-@RequestMapping("/documents")
+import java.util.List;
+
+@Controller
+@RequestMapping("/api/doc")
 public class DocumentControl {
     private final DocumentService documentService;
     private final DocumentInfoService documentInfoService;
@@ -24,6 +25,12 @@ public class DocumentControl {
         this.documentService = documentService;
         this.documentInfoService = documentInfoService;
         this.documentVersionService = documentVersionService;
+    }
+
+    @GetMapping("/")
+    public ResponseEntity<String> handleDefaultRequest() {
+        // Возвращает строку с сообщением о том, что запрос неизвестен
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Unknown request");
     }
 
     @PostMapping("/create")
